@@ -52,7 +52,9 @@ export const Item = styled.li`
 
 export const Search = styled.span`
     color: white;
-
+    display: flex;
+    align-items: center;
+    position: relative;
     svg {
         height: 25px;
     }
@@ -67,7 +69,7 @@ export const logoVariants = {
     },
 }
 
-export const Circle = styled.span`
+export const Circle = styled(motion.span)`
     position: absolute;
     width: 5px;
     height: 5px;
@@ -77,4 +79,10 @@ export const Circle = styled.span`
     right: 0;
     margin: 0 auto;
     background-color: ${(props) => props.theme.red};
+`;
+
+export const Input = styled(motion.input)`
+    transform-origin: right center;
+    position: absolute;
+    left: -150px;
 `;
