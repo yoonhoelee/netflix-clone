@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import {motion} from "framer-motion";
 
-export const Nav = styled.nav`
+export const Nav = styled(motion.nav)`
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     width: 100%;
     top: 0;
-    background-color: black;
     font-size: 14px;
     padding: 20px 60px;
     color: white;
@@ -61,13 +60,16 @@ export const Search = styled.span`
 `;
 
 export const logoVariants = {
-    normal:{
-        fillOpacity:1,
+    normal: {
+        fillOpacity: 1,
     },
-    active:{
-        fillOpacity: 0,
+    active: {
+        fillOpacity: [0, 1, 0],
+        transition: {
+            repeat: Infinity,
+        },
     },
-}
+};
 
 export const Circle = styled(motion.span)`
     position: absolute;
@@ -84,5 +86,21 @@ export const Circle = styled(motion.span)`
 export const Input = styled(motion.input)`
     transform-origin: right center;
     position: absolute;
-    left: -150px;
+    right: 0px;
+    padding: 5px 10px;
+    padding-left: 40px;
+    z-index: -1;
+    color: white;
+    font-size: 16px;
+    background-color: transparent;
+    border: 1px solid ${(props) => props.theme.white.lighter};
 `;
+
+export const navVariants = {
+    top: {
+        backgroundColor: "rgba(0, 0, 0, 0)",
+    },
+    scroll: {
+        backgroundColor: "rgba(0, 0, 0, 1)",
+    },
+};
