@@ -135,3 +135,35 @@ export const Overview = styled.p`
     font-size: 28px;
     width: 50%;
 `;
+
+export const Slider = styled.div`
+    position: relative;
+    top: -100px;
+`;
+
+export const Row = styled(motion.div)`
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 10px;
+    position: absolute;
+    width: 100%;
+`;
+
+export const Box = styled(motion.div)`
+    background-color: white;
+    height: 200px;
+    color: red;
+    font-size: 64px;
+`;
+
+export const rowVariants = {
+    hidden :{
+        x:window.outerWidth +10,
+    },
+    visible: {
+        x:0,
+    },
+    exit: {
+        x:-window.outerWidth -10,
+    },
+};
