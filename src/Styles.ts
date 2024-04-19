@@ -144,26 +144,28 @@ export const Slider = styled.div`
 export const Row = styled(motion.div)`
     display: grid;
     grid-template-columns: repeat(6,1fr);
-    gap: 10px;
+    gap: 5px;
     position: absolute;
     width: 100%;
 `;
 
-export const Box = styled(motion.div)`
+export const Box = styled(motion.div)<{bgPhoto:string}>`
     background-color: white;
     height: 200px;
-    color: red;
+    background-image: url(${props => props.bgPhoto});
+    background-size: cover;
+    background-position: center center;
     font-size: 64px;
 `;
 
 export const rowVariants = {
     hidden :{
-        x:window.outerWidth +10,
+        x:window.outerWidth +5,
     },
     visible: {
         x:0,
     },
     exit: {
-        x:-window.outerWidth -10,
+        x:-window.outerWidth -5,
     },
 };
