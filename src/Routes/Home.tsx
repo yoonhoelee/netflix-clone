@@ -1,6 +1,6 @@
 import {useQuery} from "react-query";
 import {getMovies, IGetMoviesResult} from "../api";
-import {Banner, Box, Loader, Overview, Row, rowVariants, Slider, Title, Wrapper} from "../Styles";
+import {Banner, Box, BoxVariants, Loader, Overview, Row, rowVariants, Slider, Title, Wrapper} from "../Styles";
 import {makeImagePath} from "../utils";
 import {AnimatePresence} from "framer-motion";
 import {useState} from "react";
@@ -49,6 +49,10 @@ function Home() {
                                     <Box
                                         key={movie.id}
                                         bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
+                                        variants={BoxVariants}
+                                        whileHover= "hover"
+                                        initial="normal"
+                                        transition={{type:"tween"}}
                                     />
                                 ))}
                         </Row>

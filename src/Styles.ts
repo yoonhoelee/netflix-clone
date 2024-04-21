@@ -156,6 +156,12 @@ export const Box = styled(motion.div)<{bgPhoto:string}>`
     background-size: cover;
     background-position: center center;
     font-size: 64px;
+    &:first-child {
+        transform-origin: center left;
+    }
+    &:last-child{
+        transform-origin: center right;
+    }
 `;
 
 export const rowVariants = {
@@ -169,3 +175,18 @@ export const rowVariants = {
         x:-window.outerWidth -5,
     },
 };
+
+export const BoxVariants ={
+    normal:{
+        scale:1,
+    },
+    hover:{
+        scale: 1.3,
+        y:-50,
+        transition: {
+            delay: 0.5,
+            duration:0.3,
+            type:"tween",
+        },
+    }
+}
