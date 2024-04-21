@@ -1,6 +1,19 @@
 import {useQuery} from "react-query";
 import {getMovies, IGetMoviesResult} from "../api";
-import {Banner, Box, BoxVariants, Loader, Overview, Row, rowVariants, Slider, Title, Wrapper} from "../Styles";
+import {
+    Banner,
+    Box,
+    BoxVariants,
+    Info,
+    InfoVariant,
+    Loader,
+    Overview,
+    Row,
+    rowVariants,
+    Slider,
+    Title,
+    Wrapper
+} from "../Styles";
 import {makeImagePath} from "../utils";
 import {AnimatePresence} from "framer-motion";
 import {useState} from "react";
@@ -16,7 +29,7 @@ function Home() {
             toggleLeaving();
             const totalMovies = data?.results.length - 1;
             const maxIndex = Math.floor(totalMovies / offset);
-            setIndex((prev) => (prev === maxIndex? 0: prev + 1));
+            setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
         }
     };
     const toggleLeaving = () => setLeaving((prev) => !prev);
@@ -50,10 +63,14 @@ function Home() {
                                         key={movie.id}
                                         bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
                                         variants={BoxVariants}
-                                        whileHover= "hover"
+                                        whileHover="hover"
                                         initial="normal"
-                                        transition={{type:"tween"}}
-                                    />
+                                        transition={{type: "tween"}}
+                                    >
+                                        <Info variants={InfoVariant}>
+                                            <h4>{movie.title}</h4>
+                                        </Info>
+                                    </Box>
                                 ))}
                         </Row>
                     </AnimatePresence>

@@ -190,3 +190,27 @@ export const BoxVariants ={
         },
     }
 }
+
+export const Info = styled(motion.div)`
+    padding: 20px;
+    background-color: ${props => props.theme.black.lighter};
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    h4 {
+        text-align: center;
+        font-size: 18px;
+    }
+`;
+
+export const InfoVariant = {
+    hover: {
+        opacity:1,
+        transition: {
+            delay: 0.5,
+            duration:0.3,
+            type:"tween",
+        },
+    }
+};
