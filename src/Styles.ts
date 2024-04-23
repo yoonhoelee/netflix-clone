@@ -156,6 +156,7 @@ export const Box = styled(motion.div)<{bgPhoto:string}>`
     background-size: cover;
     background-position: center center;
     font-size: 64px;
+    cursor: pointer;
     &:first-child {
         transform-origin: center left;
     }
