@@ -226,10 +226,35 @@ export const Overlay = styled(motion.div)`
 `;
 
 export const BigMovie = styled(motion.div)`
-  position: absolute;
-  width: 40vw;
-  height: 80vh;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+    position: absolute;
+    width: 40vw;
+    height: 80vh;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: ${(props) => props.theme.black.lighter};
+    border-radius: 15px;
+    overflow: hidden;
+`;
+
+export const BigCover = styled.div`
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center center;
+`;
+
+export const BigTitle = styled.h3`
+    color: ${(props) => props.theme.white.lighter};
+    padding: 10px;
+    font-size: 46px;
+    position: relative;
+    top: -60px;
+`;
+
+export const BigOverview = styled.p`
+    color: ${(props) => props.theme.white.lighter};
+    padding: 20px;
+    position: relative;
+    top: -80px;
 `;

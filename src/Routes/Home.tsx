@@ -1,7 +1,7 @@
 import {useQuery} from "react-query";
 import {getMovies, IGetMoviesResult} from "../api";
 import {
-    Banner, BigMovie,
+    Banner, BigCover, BigMovie, BigOverview, BigTitle,
     Box,
     BoxVariants,
     Info,
@@ -34,6 +34,7 @@ function Home() {
     const [leaving, setLeaving] = useState(false);
     const onOverlayClick = () => history.push("/");
     const {scrollY} = useViewportScroll();
+    const clickedMovie = bigMovieMatch?.params.movieId && data?.results.find(movie => String(movie.id) === bigMovieMatch.params.movieId);
     return (
         <Wrapper>
             {isLoading ? (
@@ -53,7 +54,7 @@ function Home() {
                                 initial="hidden"
                                 animate="visible"
                                 exit="exit"
-                                transition={{ type: "tween", duration: 1 }}
+                                transition={{type: "tween", duration: 1}}
                                 key={index}
                             >
                                 {data?.results
@@ -67,7 +68,7 @@ function Home() {
                                             initial="normal"
                                             variants={BoxVariants}
                                             onClick={() => onBoxClicked(movie.id)}
-                                            transition={{ type: "tween" }}
+                                            transition={{type: "tween"}}
                                             bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
                                         >
                                             <Info variants={InfoVariant}>
@@ -83,14 +84,27 @@ function Home() {
                             <>
                                 <Overlay
                                     onClick={onOverlayClick}
-                                    exit={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
+                                    exit={{opacity: 0}}
+                                    animate={{opacity: 1}}
                                 />
                                 <BigMovie
-                                    style={{ top: scrollY.get() + 100 }}
+                                    style={{top: scrollY.get() + 100}}
                                     layoutId={bigMovieMatch.params.movieId}
                                 >
-                                    hello
+                                    {clickedMovie &&
+                                        <>
+                                            <BigCover
+                                                style={{
+                                                    backgroundImage: `linear-gradient(to top, black, transparent), url(${makeImagePath(
+                                                        clickedMovie.backdrop_path,
+                                                        "w500"
+                                                    )})`,
+                                                }}
+                                            />
+                                            <BigTitle>{clickedMovie.title}</BigTitle>
+                                            <BigOverview>{clickedMovie.overview}</BigOverview>
+                                        </>
+                                    }
                                 </BigMovie>
                             </>
                         ) : null}
@@ -100,4 +114,5 @@ function Home() {
         </Wrapper>
     );
 }
+
 export default Home;
