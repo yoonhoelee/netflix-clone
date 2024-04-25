@@ -18,7 +18,6 @@ import {makeImagePath} from "../utils";
 import {AnimatePresence, useViewportScroll} from "framer-motion";
 import {useState} from "react";
 import {useHistory, useRouteMatch} from "react-router-dom";
-import {motion} from "framer-motion";
 
 const offset = 6;
 
